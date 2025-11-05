@@ -1,0 +1,18 @@
+{
+  "name": "honojs-starter-template",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "bun run --hot index.ts",
+    "build": "bun build index.ts --compile --outfile server",
+    "prettier": "prettier ./ --check",
+    "prettier:fix": "prettier ./ --write",
+    "fix": "npm run prettier:fix"
+  },
+  "dependencies": {
+    "hono": "^4.10.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.6.2"
+  }
+}
