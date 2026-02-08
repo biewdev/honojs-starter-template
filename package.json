@@ -9,10 +9,11 @@
     "fix": "bun run prettier:fix && bun outdated"
   },
   "dependencies": {
-    "hono": "^4.11.7"
+    "hono": "^4.11.9"
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/node": "^25.2.2",
     "prettier": "^3.8.1"
   }
 }

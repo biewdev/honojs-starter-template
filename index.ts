@@ -2,7 +2,7 @@ console.log('Initializing...\n');
 
 import { AppServer } from './src/AppServer';
 
-const appServer = new AppServer();
+const appServer = AppServer.getInstance();
 
 export default {
   port: 8000,
