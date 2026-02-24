@@ -1,8 +1,8 @@
-import { Hono } from 'hono';
+import { createRouter } from 'hono-route-docs';
 import helloRoute from './hello/routes/hello.route';
 
-const router = new Hono();
+const { router, route } = createRouter();
 
-router.route('/hello', helloRoute);
+route('/hello', helloRoute, { tags: ['Hello'] });
 
 export default router;

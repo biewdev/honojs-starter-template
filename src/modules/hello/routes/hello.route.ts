@@ -1,8 +1,9 @@
-import { Hono } from 'hono';
+import { Context } from 'hono';
+import { createRouter } from 'hono-route-docs';
 
-const router = new Hono();
+const { router, get } = createRouter();
 
-router.get('/', c => {
+get('/', (c: Context) => {
   return c.json({ message: 'hello world' });
 });
 

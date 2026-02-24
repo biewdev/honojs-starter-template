@@ -1,6 +1,8 @@
 import { Hono } from 'hono';
 import { showRoutes } from 'hono/dev';
 import routes from './modules/routes';
+import { openAPIDoc } from 'hono-route-docs';
+import { Scalar } from '@scalar/hono-api-reference';
 
 export class AppServer {
   private static instance: AppServer | null = null;
@@ -30,6 +32,28 @@ export class AppServer {
   private load() {
     this.app.route('/api/', routes);
 
+    this.app.get(
+      '/openapi.json',
+      openAPIDoc(routes, {
+        title: 'Template API',
+        version: '0.1.0',
+        description: 'Template Backend API Documentation',
+        prefix: '/api',
+      }),
+    );
+
+    this.app.get(
+      '/docs',
+      Scalar({
+        url: '/openapi.json',
+        theme: 'kepler',
+        layout: 'classic',
+        showDeveloperTools: 'localhost',
+        persistAuth: true,
+        operationTitleSource: 'summary',
+      }),
+    );
+
     showRoutes(this.app);
   }
 
@@ -49,6 +73,7 @@ export class AppServer {
     process.on('SIGTERM', () => shutdown('SIGTERM'));
     process.on('SIGINT', () => shutdown('SIGINT'));
   }
+
   private async cleanup(): Promise<void> {
     try {
       console.log('Cleaning up resources...');
