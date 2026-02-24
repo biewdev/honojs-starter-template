@@ -9,11 +9,13 @@
     "fix": "bun run prettier:fix && bun outdated"
   },
   "dependencies": {
-    "hono": "^4.11.9"
+    "@scalar/hono-api-reference": "^0.9.44",
+    "hono": "^4.12.2",
+    "hono-route-docs": "^1.0.1"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/node": "^25.2.2",
+    "@types/node": "^25.3.0",
     "prettier": "^3.8.1"
   }
 }
